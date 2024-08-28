@@ -17,4 +17,12 @@ public class Dossier {
         // TODO
         return 0;
     }
+
+    public void add(Fichier fichier) {
+        fichiers.add(fichier);
+    }
+
+    public void add(Dossier repertoire) {
+        sousDossiers.add(repertoire);
+    }
 }
