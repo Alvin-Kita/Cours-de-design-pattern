@@ -8,14 +8,19 @@ public class Dossier {
     private List<Fichier> fichiers = new ArrayList<>();
     private List<Dossier> sousDossiers = new ArrayList<>();
 
-
     public Dossier(String nom) {
         this.nom = nom;
     }
 
     public int calculerTaille() {
-        // TODO
-        return 0;
+        int taille = 0;
+        for (Fichier fichier : fichiers) {
+            taille += fichier.getTaille();
+        }
+        for (Dossier sousDossier : sousDossiers) {
+            taille += sousDossier.calculerTaille();
+        }
+        return taille;
     }
 
     public void add(Fichier fichier) {

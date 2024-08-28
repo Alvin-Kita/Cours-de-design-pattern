@@ -1,4 +1,4 @@
-package composite.fichier.mauvais;
+package composite.fichier.bon;
 
 public class Main {
     public static void main(String[] args) {
