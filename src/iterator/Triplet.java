@@ -1,6 +1,6 @@
 package iterator;
 
-public class Triplet implements MonIterable {
+public class Triplet implements Iterable<String> {
     private String a;
     private String b;
     private String c;

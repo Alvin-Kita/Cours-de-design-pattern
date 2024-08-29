@@ -40,7 +40,6 @@ public class Main {
         }
 
         MonIterator monIterator = monArrayList.iterator();
-        monIterator = triplet.iterator();
 
         while (monIterator.hasNext()) {
             String valeur = monIterator.next();

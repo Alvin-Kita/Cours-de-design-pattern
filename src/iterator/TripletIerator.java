@@ -1,6 +1,8 @@
 package iterator;
 
-public class TripletIerator implements MonIterator {
+import java.util.Iterator;
+
+public class TripletIerator implements Iterator<String> {
     private Triplet triplet;
     private int position;
 
