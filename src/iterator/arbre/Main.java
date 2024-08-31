@@ -23,5 +23,11 @@ public class Main {
         e.setSousArbreGauche(h);
         f.setSousArbreGauche(i);
         g.setSousArbreGauche(j);
+
+        ArbreIterator arbreIterator = new ArbreIterator(a);
+        while (arbreIterator.hasMore()) {
+            Arbre arbre = arbreIterator.getNext();
+            System.out.println(arbre.getValeur());
+        }
     }
 }
