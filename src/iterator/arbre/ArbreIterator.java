@@ -1,45 +1,34 @@
 package iterator.arbre;
 
-public class ArbreIterator implements Iterator {
+import java.util.ArrayList;
+import java.util.List;
 
-    Arbre current;
+public class ArbreIterator {
 
-    public ArbreIterator(Arbre origine) {
-        this.current = origine;
+    private final List<Arbre> arbres = new ArrayList<>();
+
+    public ArbreIterator(Arbre arbre) {
+        if (arbre != null) {
+            arbres.add(arbre);
+        }
     }
 
-    @Override
     public boolean hasMore() {
-        return current != null;
+        return !arbres.isEmpty(); // Si la liste n'est pas vide, il reste des éléments à parcourir
     }
 
-    /**
-     * Parcours Depth-First.
-     * On part de la racine et on va le plus à gauche possible.
-     * Si on ne peut plus aller à gauche, on va à droite.
-     * Si on ne peut plus descendre dans l'arbre, on remonte jusqu'à trouver une branche droite non visitée.
-     */
-    @Override
     public Arbre getNext() {
-
-        // On part la gauche si on n'y est pas déjà allé.
-        if (current.getSousArbreGauche() != null && !current.getSousArbreGauche().isVisited()) {
-            current = current.getSousArbreGauche();
+        if (!hasMore()) {
+            return null;
         }
+        Arbre current = arbres.removeFirst();
 
-        // S'il n'y a pas de branche à gauche ou qu'on y est déjà allé, on part à droite.
-        else if (current.getSousArbreDroit() != null && !current.getSousArbreDroit().isVisited()) {
-            current = current.getSousArbreDroit();
-
-        // S'il n'y a pas de branche à gauche ou à droite ou qu'on y est déjà allé, on remonte jusqu'à tomber sur une branche droite non visitée.
-        } else {
-            while (current.getSousArbreDroit() == null || current.getSousArbreDroit().isVisited()) {
-                current = current.getParent();
-            }
-            current = current.getSousArbreDroit();
+        if (current.getSousArbreGauche() != null) {
+            arbres.add(current.getSousArbreGauche());
         }
-        current.setVisited();
-
+        if (current.getSousArbreDroit() != null) {
+            arbres.add(current.getSousArbreDroit());
+        }
         return current;
     }
 }

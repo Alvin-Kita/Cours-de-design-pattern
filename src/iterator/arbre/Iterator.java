@@ -5,6 +5,6 @@ public interface Iterator {
     boolean hasMore();
 
     // Récupérer le point suivant
-    Arbre getNext();
+    Arbre getNext(Arbre arbre);
 
 }
